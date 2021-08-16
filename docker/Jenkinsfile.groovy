@@ -19,7 +19,7 @@ pipeline {
         sh """
         #!/bin/bash
         echo 'Verifying Container Image using Docker..'
-        docker images'
+        docker images
         """
       }
     }
