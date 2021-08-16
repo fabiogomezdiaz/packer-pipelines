@@ -5,6 +5,7 @@ pipeline {
     stage('Packer - Build Docker Image') {
       steps {
         echo 'Building Ubuntu Container Image using Packer...'
+        sh 'echo $PATH'
         sh 'cd docker'
         sh 'packer init .'
         sh 'packer build -force .'
