@@ -6,6 +6,7 @@ pipeline {
       steps {
         echo 'Building Ubuntu Container Image using Packer...'
         sh 'cd docker'
+        sh 'ls -la .'
         sh 'packer init .'
         sh 'packer build -force .'
       }
