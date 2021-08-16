@@ -5,7 +5,8 @@ pipeline {
     stage('Setting PATH') {
       steps {
         echo 'Setting PATH for Packer...'
-        sh 'export PATH="/usr/local/bin:${PATH}"'
+        sh 'export PATH="/usr/local/bin:${PATH}" && echo $PATH'
+        sh 'echo $PATH'
       }
     }
     stage('Packer - Build Docker Image') {
