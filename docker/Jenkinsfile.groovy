@@ -4,17 +4,23 @@ pipeline {
   stages {
     stage('Packer - Build Docker Image') {
       steps {
+        sh """
+        #!/bin/bash
         echo 'Building Ubuntu Container Image using Packer...'
-        sh 'cd docker'
-        sh 'ls -la .'
-        sh 'packer init .'
-        sh 'packer build -force .'
+        cd docker
+        ls -la .
+        packer init .
+        packer build -force .
+        """
       }
     }
     stage('Docker - Verify Docker Image') {
       steps {
+        sh """
+        #!/bin/bash
         echo 'Verifying Container Image using Docker..'
-        sh 'docker images'
+        docker images'
+        """
       }
     }
   }
