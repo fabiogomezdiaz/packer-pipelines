@@ -11,6 +11,7 @@ pipeline {
       }
     }
     stage('Docker - Verify Docker Image') {
+      steps {
         echo 'Verifying Container Image using Docker..'
         sh 'docker images'
       }
