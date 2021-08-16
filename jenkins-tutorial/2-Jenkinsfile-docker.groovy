@@ -1,29 +1,12 @@
 pipeline {
-  agent none
-
-  stages {
-    stage('Packer - Build Docker Image') {
-      agent {
-        docker {
-          image 'hashicorp/packer:light'
-        }
-      }
-      steps {
-        sh """
-        #!/bin/bash
-        cd jenkins-tutorial
-        packer init .
-        packer build -force .
-        """
-      }
+    agent {
+        docker { image 'node:14-alpine' }
     }
-    /*stage('Docker - Verify Docker Image') {
-      steps {
-        sh """
-        #!/bin/bash
-        docker images
-        """
-      }
-    }*/
-  }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
 }
