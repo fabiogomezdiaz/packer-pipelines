@@ -2,10 +2,15 @@ pipeline {
   agent any
 
   stages {
+    stage('Setting PATH') {
+      steps {
+        echo 'Setting PATH for Packer...'
+        sh 'export PATH="/usr/local/bin:${PATH}"'
+      }
+    }
     stage('Packer - Build Docker Image') {
       steps {
         echo 'Building Ubuntu Container Image using Packer...'
-        sh 'echo $PATH'
         sh 'cd docker'
         sh 'packer init .'
         sh 'packer build -force .'
