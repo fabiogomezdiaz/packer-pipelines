@@ -6,9 +6,6 @@ pipeline {
       steps {
         sh """
         #!/bin/bash
-        echo 'Building Ubuntu Container Image using Packer...'
-        cd docker
-        ls -la .
         packer init .
         packer build -force .
         """
@@ -18,7 +15,6 @@ pipeline {
       steps {
         sh """
         #!/bin/bash
-        echo 'Verifying Container Image using Docker..'
         docker images
         """
       }
