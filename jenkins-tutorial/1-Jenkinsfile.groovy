@@ -6,6 +6,7 @@ pipeline {
       steps {
         sh """
         #!/bin/bash
+        cd jenkins-tutorial
         packer init .
         packer build -force .
         """
