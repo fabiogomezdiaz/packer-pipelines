@@ -24,7 +24,6 @@ pipeline {
       steps {
         sh """
         #!/bin/sh
-        mkdir tmp
         cd jenkins-tutorial
         packer init .
         ls -la .packer.d/plugins
