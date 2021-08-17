@@ -1,4 +1,17 @@
 pipeline {
+    agent {
+        docker { image 'node:14-alpine' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}
+
+/*pipeline {
   agent none
 
   stages {
@@ -16,13 +29,13 @@ pipeline {
         """
       }
     }
-    /*stage('Docker - Verify Docker Image') {
+    stage('Docker - Verify Docker Image') {
       steps {
         sh """
         #!/bin/bash
         docker images
         """
       }
-    }*/
+    }
   }
-}
+}*/
