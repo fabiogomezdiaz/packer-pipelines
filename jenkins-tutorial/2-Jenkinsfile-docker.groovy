@@ -24,6 +24,7 @@ pipeline {
       }
       steps {
         sh """
+        echo ${WORKSPACE}
         cd jenkins-tutorial
         packer init .
         packer build -force .
