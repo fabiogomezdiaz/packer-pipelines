@@ -21,11 +21,11 @@ pipeline {
       steps {
         sh """
         #!/bin/sh
+        printenv
         docker ps
         cd jenkins-tutorial
         packer init .
         ls -la ${PACKER_PLUGIN_PATH}
-        #printenv
         packer build -force .
         """
       }
