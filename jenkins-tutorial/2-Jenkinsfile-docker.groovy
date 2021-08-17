@@ -1,22 +1,15 @@
-/*pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
-    }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
-    }
-}*/
-
 pipeline {
   agent {
     docker {
       image 'fabiogomezdiaz/docker-packer:latest'
-      args "--privileged -e PACKER_HOME_DIR='.packer.d' -e PACKER_PLUGIN_PATH='.packer.d/plugins' -e TMPDIR='../tmp' --entrypoint=''"
+      args "--privileged --entrypoint=''"
     }
+  }
+
+  environment {
+    PACKER_HOME_DIR = env.WORKSPACE + "/.packer.d"
+    PACKER_PLUGIN_PATH = env.WORKSPACE + "/.packer.d/plugins"
+    TMPDIR = env.WORKSPACE_TMP
   }
 
   stages {
