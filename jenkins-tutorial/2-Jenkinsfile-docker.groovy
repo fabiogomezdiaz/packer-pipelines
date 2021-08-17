@@ -15,7 +15,7 @@ pipeline {
   agent {
     docker {
       image 'fabiogomezdiaz/docker-packer:latest'
-      args "--privileged -e PACKER_HOME_DIR='.packer.d' -e PACKER_PLUGIN_PATH='.packer.d/plugins' -e TMPDIR='.packer.d' --entrypoint=''"
+      args "--privileged -e PACKER_HOME_DIR='.packer.d' -e PACKER_PLUGIN_PATH='.packer.d/plugins' -e TMPDIR='tmp' --entrypoint=''"
     }
   }
 
@@ -23,7 +23,7 @@ pipeline {
     stage('Packer - Build Docker Image') {
       steps {
         sh """
-        echo ${WORKSPACE}
+        #!/bin/sh
         cd jenkins-tutorial
         packer init .
         ls -la .packer.d/plugins
@@ -34,7 +34,7 @@ pipeline {
     stage('Docker - Verify Docker Image') {
       steps {
         sh """
-        #!/bin/bash
+        #!/bin/sh
         docker images
         """
       }
