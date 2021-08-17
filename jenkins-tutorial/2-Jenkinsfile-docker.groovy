@@ -20,7 +20,6 @@ pipeline {
         sh """
         #!/bin/sh
         cd jenkins-tutorial
-        whoami
         packer init .
         ls -la ${PACKER_PLUGIN_PATH}
         printenv
