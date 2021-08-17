@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'fabiogomezdiaz/docker-packer:latest'
-      args "--privileged --entrypoint='' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock"
+      args "--privileged=true --entrypoint=''"
     }
   }
 
