@@ -19,7 +19,7 @@ pipeline {
       agent {
         docker {
           image 'hashicorp/packer:light'
-          args "-e PACKER_PLUGIN_PATH='.packer.d/plugins' --entrypoint=''"
+          args "-e PACKER_PLUGIN_PATH=\"${env.WORKSPACE}.packer.d/plugins\" --entrypoint=''"
         }
       }
       steps {
@@ -27,7 +27,7 @@ pipeline {
         echo ${WORKSPACE}
         cd jenkins-tutorial
         packer init .
-        packer build -force .
+        #packer build -force .
         """
       }
     }
