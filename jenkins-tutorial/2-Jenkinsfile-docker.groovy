@@ -14,12 +14,8 @@
 pipeline {
   agent {
     docker {
-      image 'hashicorp/packer:light'
-      args "-e PACKER_PLUGIN_PATH='.packer.d/plugins' --entrypoint=''"
-    }
-    docker {
-      image 'docker:20.10-dind'
-      args "--privileged"
+      image 'fabiogomezdiaz/docker-packer:latest'
+      args "--privileged -e PACKER_PLUGIN_PATH='.packer.d/plugins' --entrypoint=''"
     }
   }
 
