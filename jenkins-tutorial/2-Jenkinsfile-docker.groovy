@@ -26,6 +26,7 @@ pipeline {
         sh """
         echo ${WORKSPACE}
         cd jenkins-tutorial
+        mkdir -p .packer.d/plugins
         packer init .
         packer build -force .
         """
