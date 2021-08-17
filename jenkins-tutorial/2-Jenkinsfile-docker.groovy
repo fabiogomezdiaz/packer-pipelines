@@ -19,7 +19,7 @@ pipeline {
       agent {
         docker {
           image 'hashicorp/packer:light'
-          args "PACKER_PLUGIN_PATH='.packer.d/plugins' --entrypoint=''"
+          args "-e PACKER_PLUGIN_PATH='.packer.d/plugins' --entrypoint=''"
         }
       }
       steps {
