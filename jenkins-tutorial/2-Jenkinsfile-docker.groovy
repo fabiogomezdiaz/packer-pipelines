@@ -7,9 +7,9 @@ pipeline {
   }
 
   environment {
-    PACKER_HOME_DIR = env.WORKSPACE + "/.packer.d"
-    PACKER_PLUGIN_PATH = env.WORKSPACE + "/.packer.d/plugins"
-    TMPDIR = env.WORKSPACE_TMP
+    PACKER_HOME_DIR = "${env.WORKSPACE}/.packer.d"
+    PACKER_PLUGIN_PATH = "${env.WORKSPACE}/.packer.d/plugins"
+    TMPDIR = "${env.WORKSPACE_TMP}"
   }
 
   stages {
