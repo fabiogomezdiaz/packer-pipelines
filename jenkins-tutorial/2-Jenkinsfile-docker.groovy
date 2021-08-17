@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'fabiogomezdiaz/docker-packer:latest'
-      args "--privileged --entrypoint=''"
+      args "--privileged --entrypoint='' -v /var/lib/docker:/var/lib/docker"
     }
   }
 
@@ -19,10 +19,9 @@ pipeline {
       steps {
         sh """
         #!/bin/sh
-        ls -la
         cd jenkins-tutorial
         packer init .
-        ls -la .packer.d/plugins
+        ls -la ${PACKER_PLUGIN_PATH}
         printenv
         packer build -force .
         """
