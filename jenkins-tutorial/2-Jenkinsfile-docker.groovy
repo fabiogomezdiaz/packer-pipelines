@@ -19,6 +19,7 @@ pipeline {
       agent {
         docker {
           image 'hashicorp/packer:light'
+          args '-v `pwd`:/workspace -w /workspace -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins'
         }
       }
       steps {
