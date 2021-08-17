@@ -15,7 +15,7 @@ pipeline {
   agent {
     docker {
       image 'fabiogomezdiaz/docker-packer:latest'
-      args "--privileged -e PACKER_HOME_DIR='.packer.d' -e PACKER_PLUGIN_PATH='.packer.d/plugins' --entrypoint=''"
+      args "--privileged -e PACKER_HOME_DIR='.packer.d' -e PACKER_PLUGIN_PATH='.packer.d/plugins' -e TMPDIR='/var/tmp' --entrypoint=''"
     }
   }
 
