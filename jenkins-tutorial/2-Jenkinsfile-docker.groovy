@@ -27,17 +27,17 @@ pipeline {
         cd jenkins-tutorial
         packer init .
         ls -la .packer.d
-        #packer build -force .
+        packer build -force .
         """
       }
     }
-    /*stage('Docker - Verify Docker Image') {
+    stage('Docker - Verify Docker Image') {
       steps {
         sh """
         #!/bin/bash
         docker images
         """
       }
-    }*/
+    }
   }
 }
