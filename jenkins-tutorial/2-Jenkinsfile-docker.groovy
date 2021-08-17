@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'hashicorp/packer:light'
+      args "--entrypoint=''"
       //image 'fabiogomezdiaz/docker-packer:latest'
       //args "--privileged=true --entrypoint=''"
     }
