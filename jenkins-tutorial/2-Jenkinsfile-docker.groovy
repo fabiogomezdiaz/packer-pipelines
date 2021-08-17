@@ -27,6 +27,7 @@ pipeline {
         cd jenkins-tutorial
         packer init .
         ls -la .packer.d/plugins
+        printenv
         packer build -force .
         """
       }
