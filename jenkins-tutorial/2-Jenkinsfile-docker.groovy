@@ -4,7 +4,7 @@ pipeline {
       //mage 'hashicorp/packer:light'
       //args "--entrypoint=''"
       image 'fabiogomezdiaz/jenkins-agent-packer-docker:latest'
-      args "--entrypoint='' -v /certs/client:/certs/client"
+      args "--network jenkins --entrypoint='' -v /certs/client:/certs/client"
     }
   }
 
