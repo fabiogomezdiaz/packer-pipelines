@@ -3,8 +3,8 @@ pipeline {
     docker {
       //mage 'hashicorp/packer:light'
       //args "--entrypoint=''"
-      image 'fabiogomezdiaz/docker-packer:latest'
-      args "--privileged=true --entrypoint=''"
+      image 'fabiogomezdiaz/jenkins-agent-packer-docker:latest'
+      args "--entrypoint=''"
     }
   }
 
@@ -14,6 +14,9 @@ pipeline {
     PACKER_HOME_DIR = "${env.WORKSPACE_TMP}/.packer.d"
     PACKER_PLUGIN_PATH = "${env.WORKSPACE_TMP}/.packer.d/plugins"
     TMPDIR = "${env.WORKSPACE_TMP}"
+    DOCKER_HOST = "tcp://docker:2376"
+    DOCKER_CERT_PATH = "/certs/client"
+    DOCKER_TLS_VERIFY = 1
   }
 
   stages {
