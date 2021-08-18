@@ -3,8 +3,8 @@ pipeline {
     docker {
       //mage 'hashicorp/packer:light'
       //args "--entrypoint=''"
-      //image 'fabiogomezdiaz/docker-packer:latest'
-      //args "--privileged=true --entrypoint=''"
+      image 'fabiogomezdiaz/docker-packer:latest'
+      args "--privileged=true --entrypoint=''"
     }
   }
 
