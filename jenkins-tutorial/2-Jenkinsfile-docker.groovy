@@ -22,7 +22,7 @@ pipeline {
         sh """
         #!/bin/sh
         printenv
-        docker ps
+        #docker ps
         cd jenkins-tutorial
         packer init .
         ls -la ${PACKER_PLUGIN_PATH}
