@@ -1,9 +1,7 @@
 pipeline {
   agent {
     docker {
-      //mage 'hashicorp/packer:light'
-      //args "--entrypoint=''"
-      image 'fabiogomezdiaz/jenkins-agent-packer-docker:latest'
+      image "${AGENT_DOCKER_IMAGE}" ?: 'fabiogomezdiaz/jenkins-agent-packer-docker:latest'
       args "--entrypoint='' -v /certs/client:/certs/client"
     }
   }
@@ -14,7 +12,7 @@ pipeline {
     PACKER_HOME_DIR = "${env.WORKSPACE_TMP}/.packer.d"
     PACKER_PLUGIN_PATH = "${env.WORKSPACE_TMP}/.packer.d/plugins"
     TMPDIR = "${env.WORKSPACE_TMP}"
-    DOCKER_HOST = "tcp://172.18.0.2:2376"
+    DOCKER_HOST = "tcp://${DOCKER_HOST_IP}:2376"
   }
 
   stages {
@@ -22,11 +20,8 @@ pipeline {
       steps {
         sh """
         #!/bin/sh
-        printenv
-        docker ps
         cd jenkins-tutorial
         packer init .
-        ls -la ${PACKER_PLUGIN_PATH}
         packer build -force .
         """
       }
