@@ -1,5 +1,6 @@
 # Cache objects
 **/packer_cache/
+**/.packer.d/
 
 # Crash log
 **/crash.log
