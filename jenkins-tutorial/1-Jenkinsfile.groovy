@@ -16,6 +16,7 @@ pipeline {
       steps {
         sh """
         #!/bin/bash
+        sleep 60
         docker images
         """
       }
