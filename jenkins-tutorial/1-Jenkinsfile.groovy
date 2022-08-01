@@ -7,8 +7,8 @@ pipeline {
         sh """
         #!/bin/bash
         cd jenkins-tutorial
-        packer init .
-        packer build -force .
+        /usr/bin/packer init .
+        /usr/bin/packer build -force .
         """
       }
     }
