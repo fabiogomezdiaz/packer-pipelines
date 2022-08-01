@@ -7,6 +7,7 @@ pipeline {
         sh """
         #!/bin/bash
         cd jenkins-tutorial
+        whoami
         /usr/bin/packer init .
         /usr/bin/packer build -force .
         """
@@ -16,6 +17,7 @@ pipeline {
       steps {
         sh """
         #!/bin/bash
+        whoami
         sleep 60
         docker images
         """
